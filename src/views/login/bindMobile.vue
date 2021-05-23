@@ -1,75 +1,84 @@
 <template>
-  <div>
-    <HeadTop head-title="绑定手机" go-back="true"></HeadTop>
-    <div id="wrapper">
-      <div id="middle" class="container">
-        <div class="title">hello，欢迎回来</div>
-        <div class="account-form">
-          <div class="account-form-group has-error">
-            <!--下面这行是为了避免chrome自动填充，触发focus和blur事件-->
-            <div class="iLoginComp-phone-num-wrapper">
-                <span>中国</span>
-                <span>+86</span>
-                <input type="text" name="txtuserName" style="display: none" />
-                <input
-                type="text"
-                name="txtuserName"
-                class="account-form-control js-input-name"
-                v-model.trim="name"
-                autocomplete="off"
-                maxlength="20"
-                placeholder="手机号"
-                />
+    <div>
+        <HeadTop head-title="绑定手机" go-back="true"></HeadTop>
+        <div id="wrapper">
+            <div id="middle" class="container">
+                <div class="title">hello，欢迎回来</div>
+                <div class="account-form">
+                    <div class="account-form-group has-error">
+                        <!--下面这行是为了避免chrome自动填充，触发focus和blur事件-->
+                        <div class="iLoginComp-phone-num-wrapper">
+                            <div class="country-area">
+                                <span>中国</span>
+                                <span>+86</span>
+                                <i class="el-icon-arrow-right"></i>
+                            </div>
+                            <input
+                                type="text"
+                                name="txtuserName"
+                                style="display: none"
+                            />
+                            <input
+                                type="text"
+                                name="txtuserName"
+                                class="account-form-control js-input-name"
+                                v-model.trim="name"
+                                autocomplete="off"
+                                maxlength="20"
+                                placeholder="手机号"
+                            />
+                        </div>
+                    </div>
+                    <div class="account-form-group has-error">
+                        <!--下面这行是为了避免chrome自动填充，触发focus和blur事件-->
+                        <div class="iLoginComp-verify-code-wrapper">
+                            <input
+                                :type="inputType"
+                                name="txtPassword"
+                                style="display: none"
+                            />
+                            <input
+                                :type="inputType"
+                                name="txtPassword"
+                                class="account-form-control js-input-password"
+                                autocomplete="off"
+                                v-model.trim="password"
+                                maxlength="20"
+                                placeholder="请输入验证码"
+                            />
+                            <span>获取验证码</span>
+                        </div>
+                    </div>
+                    <div class="account-form-group button-row">
+                        <div class="account-form-tip js-error"></div>
+                        <div
+                            href="javascript:void(0)"
+                            class="account-form-btn js-btn-login"
+                            @click="submit"
+                        >
+                            登录
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="account-form-group has-error">
-            <!--下面这行是为了避免chrome自动填充，触发focus和blur事件-->
-            <input :type="inputType" name="txtPassword" style="display: none" />
-            <input
-              :type="inputType"
-              name="txtPassword"
-              class="account-form-control js-input-password"
-              autocomplete="off"
-              v-model.trim="password"
-              maxlength="20"
-              placeholder="请输入验证码"
-            />
-            <i
-              class="imwap-visibility js-showpw iconfont"
-              :class="passwordClass"
-              @click="showPW"
-            ></i>
-          </div>
-          <div class="account-form-group button-row">
-            <div class="account-form-tip js-error"></div>
-            <div
-              href="javascript:void(0)"
-              class="account-form-btn js-btn-login"
-              @click="submit"
-            >
-              登录
+            <div class="account-sns-login">
+                <div class="tit">
+                    <div class="line"></div>
+                    <p>测试环境仅支持已有账号登录</p>
+                    <div class="line"></div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="account-sns-login">
-        <div class="tit">
-          <div class="line"></div>
-          <p>测试环境仅支持已有账号登录</p>
-          <div class="line"></div>
-        </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
 import HeadTop from "@/components/header/Head";
 export default {
-  name: "bindMobile",
-  components: {
-    HeadTop,
-  },
+    name: "bindMobile",
+    components: {
+        HeadTop,
+    },
 };
 </script>
 
@@ -94,11 +103,34 @@ export default {
             position: relative;
             overflow: hidden;
             border-bottom: 1px solid #d9dde1;
-            .iLoginComp-phone-num-wrapper{
+            .iLoginComp-phone-num-wrapper {
                 display: flex;
+                align-items: center;
+                padding-left: 0.13333333rem;
+                .country-area {
+                    display: flex;
+                    align-items: center;
+                    font-size: 0.28rem;
+                    color: #646464;
+                    white-space: nowrap;
+                    span {
+                        margin-right: 0.1rem;
+                    }
+                }
+            }
+            .iLoginComp-verify-code-wrapper{
+                display: flex;
+                align-items: center;
+                white-space: nowrap;
+                span{
+                    color: #646464;
+                    padding-left: 0.25rem;
+                    border-left: 1px solid #d9dde1;
+                    cursor: pointer;
+                }
             }
             .account-form-control {
-                margin-bottom: 0.21333333rem;
+                // margin-bottom: 0.21333333rem;
                 padding-left: 0.13333333rem;
                 display: block;
                 width: 100%;
