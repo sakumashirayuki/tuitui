@@ -1,6 +1,7 @@
 <template>
     <div>
         <HeadTop head-title="绑定手机" go-back="true"></HeadTop>
+        <SliderVerification></SliderVerification>
         <div id="wrapper">
             <div id="middle" class="container">
                 <div class="title">hello，欢迎回来</div>
@@ -46,7 +47,7 @@
                                 maxlength="20"
                                 placeholder="请输入验证码"
                             />
-                            <span>获取验证码</span>
+                            <span @click="handleVerify">获取验证码</span>
                         </div>
                     </div>
                     <div class="account-form-group button-row">
@@ -74,11 +75,24 @@
 
 <script>
 import HeadTop from "@/components/header/Head";
+import SliderVerification from "@/components/SliderVerification";
+
 export default {
     name: "bindMobile",
+    data(){
+        return{
+            showVerification: false
+        };
+    },
     components: {
         HeadTop,
+        SliderVerification
     },
+    methods: {
+        handleVerify(){
+
+        }
+    }
 };
 </script>
 
@@ -128,6 +142,9 @@ export default {
                     border-left: 1px solid #d9dde1;
                     cursor: pointer;
                 }
+            }
+            .iLoginComp-activate{
+                color: #FE8C00;
             }
             .account-form-control {
                 // margin-bottom: 0.21333333rem;
